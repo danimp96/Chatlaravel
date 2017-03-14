@@ -18,6 +18,7 @@ class CreateMensajesTable extends Migration
             $table->string('texto');
             $table->string('user');
             $table->string('idgrupo');
+            $table->timestamps();
         });
     }
 

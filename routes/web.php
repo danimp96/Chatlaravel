@@ -15,4 +15,4 @@ Route::get('/', "HomeController@getHome");
 Route::get('chat/chat/{id}', "ChatController@getChat");
 Route::post('chat/chat/{id}', "ChatController@getChat");
 Route::get('chat/crear', "ChatController@getCrear");
-Route::post('chat/crear', "ChatController@getCrear");
+Route::post('chat/crear', "ChatController@groupCreate");

@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
     public function seedMensajes(){
     	DB::table('mensajes')->delete();
     	foreach ($this->arrayMensajes as $mensaje) {
-    		$m = new mensajes;
+    		$m = new Mensaje;
     		
     		$m->texto = $mensaje['texto'];
     		$m->user = $mensaje['user'];

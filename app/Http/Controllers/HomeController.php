@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Grupo;
+use App\Mensaje;
 
 class HomeController extends Controller
 {
@@ -32,7 +34,11 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         return view('user.profile', ['user' => $user]);
     }
+
     public function getHome(){
-        return view('home',array('chats'=>$this->chats));
+        //$grupos = DB::table('grupo')->get();
+        $grupos = Grupo::all();
+        //return view('home',array('chats'=>$this->chats));
+        return view('home',array('chats'=>$grupos));        
     }
 }
