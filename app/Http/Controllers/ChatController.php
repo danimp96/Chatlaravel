@@ -36,7 +36,8 @@ class ChatController extends Controller
         return view('user.profile', ['user' => $user]);
     }
     public function getChat($id){
-        return view('chat.chat',array('chat'=>$this->chats[$id]));
+        $mensajes = Mensaje::where("idgrupo","=",$id)->get();
+        return view('chat.chat', ['mensajes' => $mensajes]);
     }
     public function getCrear(){
         return view('chat.crear');
@@ -44,24 +45,30 @@ class ChatController extends Controller
 
     public function groupCreate(Request $request){
         $grupo = new Grupo();
-        echo "3";
+        //echo "<script>console.log('3');</script>";
         if ($request->has('group'))
         {
             //$grupo = $request->input('group');
-            $grupo->group = $request->input('group');
+            $grupo->nombre = $request->input('group');
             $grupo->save();
-            echo "1";
-            echo '<script>alert("Creado correctamente");</script>';
+            //echo "<script>console.log('1');</script>";
+            //echo '<script>alert("Creado correctamente");</script>';
             return redirect()->action("HomeController@getHome");
         }else{
-            echo "2";
+           // echo "<script>console.log('2');</script>";
             echo '<script>alert("Creado incorrectamente");</script>';
-            return redirect()->action("HomeController@getHome");
+            return redirect()->action("ChatController@getCrear");
         } 
     }
 
-    public function messageShow(){
-        $mensajes = Mensaje::all();
+    public function mensajeCreate(Request $request){
+        $mensaje = new Mensaje();
+        
+        return "0";
+    }
 
+    public function messageShow($id){
+        $mensajes = Mensaje::where("idgrupo","=",$id);
+        return view('chat.chat',['chat' => $mensajes]);
     }
 }

@@ -6,7 +6,7 @@
     @foreach( $chats as $key => $chat )
     <div class="col-xs-6 col-sm-4 col-md-12 text-center">
 
-        <a href="{{ url('/chat/chat/' . $key ) }}">
+        <a href="{{ url('/chat/chat/' . $chat['idgrupo'] ) }}">
             
             <button class="btn btn-primary" type="submit">{{$chat['nombre']}}</button>
             
